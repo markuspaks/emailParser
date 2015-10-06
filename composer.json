@@ -1,0 +1,16 @@
+{
+    "name": "markuspaks/email-parser",
+    "authors": [
+        {
+          "name": "CaTz"
+        },
+        {
+            "name": "Markus Paks",
+            "email": "markus.paks@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "EmailParser": "." }
+    },
+    "require": {}
+}

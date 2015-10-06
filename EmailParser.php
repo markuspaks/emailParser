@@ -2,10 +2,16 @@
 
 /**
  * @author CaTz
+ * @author Markus Paks <markus.paks@gmail.com>
  * @link https://github.com/CaTzil/emailParser
+ * @link https://github.com/markuspaks/emailParser
  */
 
-class emailParser
+namespace EmailParser;
+
+use Exception;
+
+class EmailParser
 {
 
     /**
@@ -22,7 +28,7 @@ class emailParser
 
     /**
      *
-     * @var Associative Array
+     * @var array Associative Array
      */
     protected $headers;
 
@@ -50,13 +56,13 @@ class emailParser
 
     /**
      * 
-     * @var Associative Array with text and html part of the email
+     * @var array Associative Array with text and html part of the email
      */
     protected $bodies;
 
     /**
      * 
-     * @var Associative Array with attachments of the email
+     * @var array Associative Array with attachments of the email
      */
     protected $files;
 
@@ -343,7 +349,8 @@ class emailParser
     }
 
     /**
-     * return string - UTF8 encoded
+     * @param string $returnType
+     * @return string - UTF8 encoded
      */
     public function getBody($returnType = 'plain')
     {
@@ -385,19 +392,23 @@ class emailParser
     }
 
     /**
-     * 
-     * @return Associative Array - array of all the attachments, each entry is assoc array with file info.
+     *
+     * @param string $type
+     * @return array Associative Array - array of all the attachments, each entry is assoc array with file info.
      */
-    public function getAttachments($type='')
+    public function getAttachments($type = '')
     {
     	if($type)
     	{
+            $foundFiles = array();
     		foreach($this->files as $file)
     		{
     			//check the file type
     			if(strpos($file["content_type"], $type)!==false || strpos($file["file_name"], '.'.$type))
-    			return $file;
+    			$foundFiles[] = $file;
     		}
+
+            return $foundFiles;
     	}
 
 		return $this->files;
