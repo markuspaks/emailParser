@@ -64,7 +64,7 @@ class EmailParser
      * 
      * @var array Associative Array with attachments of the email
      */
-    protected $files;
+    protected $files = array();
 
 
     public function __construct($emailRawContent)
@@ -414,5 +414,3 @@ class EmailParser
 		return $this->files;
     }
 }
-
-?>
