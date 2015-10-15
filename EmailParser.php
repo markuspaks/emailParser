@@ -404,7 +404,7 @@ class EmailParser
     		foreach($this->files as $file)
     		{
     			//check the file type
-    			if(strpos($file["content_type"], $type)!==false || strpos($file["file_name"], '.'.$type))
+    			if(strpos($file["content_type"], $type)!==false || strpos($file["filename"], '.'.$type))
     			$foundFiles[] = $file;
     		}
 
